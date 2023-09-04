@@ -9,7 +9,8 @@ function MenuItem({nome, onPress}){
 
 const styles = StyleSheet.create({
     container:{
-        padding: 5
+        padding: 5,
+        marginVertical: 2,
     },
     text:{
         fontSize: 14,

@@ -5,7 +5,7 @@ import MenuItem from "../components/MenuItem";
 const menuItens = [
     {nome: "Principal", rota:"Principal"},
     {nome: "Avisos"},
-    {nome: "Agenda"},
+    {nome: "Agenda", rota:"Agenda"},
     {nome: "Horarios"},
     {nome: "Calendario Escolar"},
     {nome: "Sair"}
@@ -16,7 +16,9 @@ function Menu({navigation}){
         <UserInfo/>
         <FlatList 
             data={menuItens}
-            renderItem={({item})=><MenuItem {...item} />}
+            renderItem={({item})=><MenuItem {...item} onPress={()=>{
+                navigation.navigate(item.rota);
+            }} />}
             keyExtractor={item=>item.nome}
         />
     </View>
@@ -25,7 +27,9 @@ function Menu({navigation}){
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#CD191E"
+        backgroundColor: "#CD191E",
+        paddingTop: 25,
+        paddingLeft: 15        
     }
 })
 

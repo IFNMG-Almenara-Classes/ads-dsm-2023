@@ -5,7 +5,7 @@ import Button from "../components/Button";
 function Login({navigation}){
     
     const handleLogin = () => {
-        navigation.navigate("Principal");
+        navigation.navigate("Menu");
     }
 
     return(

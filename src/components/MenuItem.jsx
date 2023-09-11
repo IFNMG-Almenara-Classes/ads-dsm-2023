@@ -9,11 +9,11 @@ function MenuItem({nome, onPress}){
 
 const styles = StyleSheet.create({
     container:{
-        padding: 5,
-        marginVertical: 2,
+        padding: 6,
+        marginVertical: 4,
     },
     text:{
-        fontSize: 14,
+        fontSize: 25,
         color: "#ffffff"
     }
 })

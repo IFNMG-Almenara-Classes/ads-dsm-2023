@@ -1,5 +1,6 @@
-import { FlatList, View } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 import ItemAgenda from "../components/ItemAgenda";
+import HeaderCalendario from "../components/HeaderCalendario";
 
 const itens = [
     {
@@ -34,12 +35,26 @@ const itens = [
 
 function Agenda(){
     return <View>
+        <HeaderCalendario title={"Agenda"} style={{
+            paddingBottom: 30
+        }} />
         <FlatList 
+            style={styles.list}
             data={itens}
             renderItem={({item})=><ItemAgenda item={item}/>}
             keyExtractor={(item)=>item.id}
         />        
     </View>;
 }
+
+const styles = StyleSheet.create({
+    list: {
+        marginTop: -30,
+        paddingTop: 30,
+        borderRadius: 30,
+        paddingHorizontal: 15,
+        backgroundColor: "#F3F2F9",
+    }
+})
 
 export default Agenda;

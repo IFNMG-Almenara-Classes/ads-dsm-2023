@@ -15,19 +15,20 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: "row",
         padding: 5,
-        alignItems: "center"
+        alignItems: "center",
+        paddingVertical: 20
     },
     containerNome:{
         marginLeft: 10
     },
     textNome:{
         color: "#ffffff",
-        fontSize:15,
+        fontSize:20,
         fontWeight: "bold"
     },
     textLink: {
         color: "#F3CECE",
-        fontSize:13,
+        fontSize:18,
     }
 });
 

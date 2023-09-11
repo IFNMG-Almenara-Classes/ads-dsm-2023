@@ -2,6 +2,10 @@ import { FlatList, StyleSheet, View } from "react-native";
 import ItemAgenda from "../components/ItemAgenda";
 import HeaderCalendario from "../components/HeaderCalendario";
 
+import { collection, getDocs } from "firebase/firestore";
+import {db} from "../config/firebase";
+import { useEffect, useState } from "react";
+
 const itens = [
     {
         id: 1,
@@ -34,6 +38,22 @@ const itens = [
 ]
 
 function Agenda(){
+
+    const [itens, setItens] = useState([]);
+    
+    const carregarItens = async () => {        
+        const itensSnapshot = await getDocs(collection(db, "agenda"));        
+        const itens = [];
+        itensSnapshot.forEach( (item) =>{
+            itens.push({id: item.id, ...item.data()})
+        });
+        setItens(itens)
+    }
+
+    useEffect(() => {
+      carregarItens();      
+    }, [])
+    
     return <View>
         <HeaderCalendario title={"Agenda"} style={{
             paddingBottom: 30

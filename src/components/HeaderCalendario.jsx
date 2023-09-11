@@ -33,7 +33,7 @@ export default function HeaderCalendario({
                     </View>
                 </View>
                 <View style={styles.containerDias}> 
-                    <Dia/>
+                    <Dia selecionado={true}/>
                     <Dia/>
                     <Dia/>
                     <Dia/>

@@ -2,8 +2,8 @@ import { View } from "react-native";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import { useState } from "react";
-import { app } from "../config/firebase"
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import axios from "axios";
+
 
 function Login({navigation}){
     const [usuario, setUsuario] = useState({
@@ -11,18 +11,20 @@ function Login({navigation}){
         senha: ""
     })
 
-    const handleLogin = () => {
-        const auth = getAuth(app);
-        signInWithEmailAndPassword(auth,usuario.email, usuario.senha)
-            .then((credenciais)=>{
-                alert('Usuário autenticado')
-                navigation.navigate("Menu");
-            })
-            .catch((error)=>{
-                alert("Não possível autenticar");
-                console.log(error);
-            })        
-    }
+    const handleLogin = async () => {
+        try {
+        const response = await axios.post("http://localhost:8000/usuario/autenticar",{
+            usuario: usuario.email,
+            senha: usuario.senha
+        })
+
+        navigation.navigate("Menu")
+
+        } catch (ex){
+            alert("Deu Erro!")
+        }
+           
+    }   
 
     const handleEmail = (email) =>{
         setUsuario((prev)=>({...prev, email}))
